@@ -125,6 +125,33 @@ use_scaling = st.sidebar.checkbox("Apply MinMaxScaler?", value=False,
 
 # Sidebar Slider for dynamic K value selection
 k_value = st.sidebar.slider("Select Number of Clusters (K):", min_value=1, max_value=6, value=3)
+df = load_data()
+
+# -------------------------------------------------------------
+# Sidebar
+# -------------------------------------------------------------
+st.sidebar.header("Clustering Parameters")
+
+use_scaling = st.sidebar.checkbox(
+    "Apply MinMaxScaler?",
+    value=False
+)
+
+k_value = st.sidebar.slider(
+    "Select Number of Clusters (K):",
+    min_value=1,
+    max_value=6,
+    value=3
+)
+
+# -------------------------------------------------------------
+# Metrics (ADD THIS HERE)
+# -------------------------------------------------------------
+c1, c2, c3 = st.columns(3)
+
+c1.metric("🌼 Samples", len(df))
+c2.metric("📊 Features", df.shape[1])
+c3.metric("🎯 Selected K", k_value)
 
 # -------------------------------------------------------------
 # 4. Data Preprocessing (Scaling)

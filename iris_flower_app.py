@@ -154,7 +154,16 @@ with col1:
 
     # Create the scatter plot dynamically based on chosen K
     fig, ax = plt.subplots(figsize=(6, 4.5))
-    colors = ['blue', 'green', 'yellow', 'purple', 'orange', 'red']
+    colors=[
+"#6366F1",
+"#EC4899",
+"#22C55E",
+"#F97316",
+"#EAB308",
+"#06B6D4",
+"#8B5CF6",
+"#EF4444"
+]
 
     for cluster_id in range(k_value):
         cluster_df = df_cluster[df_cluster.cluster == cluster_id]

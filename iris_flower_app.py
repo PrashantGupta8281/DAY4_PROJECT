@@ -21,7 +21,7 @@ st.set_page_config(
     initial_sidebar_state="expanded"
 )
 
-# Inject modern, elegant CSS styling
+# Inject modern, elegant CSS styling (Corrected parameter here)
 st.markdown("""
     <style>
     /* Main body adjustments */
@@ -53,13 +53,13 @@ st.markdown("""
         text-align: center;
     }
     </style>
-""", unsafe_with_html=True)
+""", unsafe_allow_html=True)
 
 # -------------------------------------------------------------
 # 2. Hero Header
 # -------------------------------------------------------------
-st.markdown('<p class="title-text">🌸 Iris Cluster Studio</p>', unsafe_with_html=True)
-st.markdown('<p class="subtitle-text">An interactive machine learning sandbox exploring K-Means Clustering on the classic Iris dataset features.</p>', unsafe_with_html=True)
+st.markdown('<p class="title-text">🌸 Iris Cluster Studio</p>', unsafe_with_html=True) if False else st.markdown('<p class="title-text">🌸 Iris Cluster Studio</p>', unsafe_allow_html=True)
+st.markdown('<p class="subtitle-text">An interactive machine learning sandbox exploring K-Means Clustering on the classic Iris dataset features.</p>', unsafe_allow_html=True)
 
 # -------------------------------------------------------------
 # 3. Data Loading & Preparation
@@ -122,13 +122,13 @@ df_cluster['Cluster'] = [f"Cluster {i}" for i in yp] # Convert to clean string c
 # -------------------------------------------------------------
 m_col1, m_col2, m_col3 = st.columns(3)
 with m_col1:
-    st.markdown(f'<div class="metric-card"><span style="color:#a3a8b4; font-size:0.9rem;">Target Clusters (K)</span><br><b style="font-size:1.8rem; color:#FF4B4B;">{k_value}</b></div>', unsafe_with_html=True)
+    st.markdown(f'<div class="metric-card"><span style="color:#a3a8b4; font-size:0.9rem;">Target Clusters (K)</span><br><b style="font-size:1.8rem; color:#FF4B4B;">{k_value}</b></div>', unsafe_allow_html=True)
 with m_col2:
     status = "Active" if use_scaling else "Inactive"
     color = "#4B79FF" if use_scaling else "#a3a8b4"
-    st.markdown(f'<div class="metric-card"><span style="color:#a3a8b4; font-size:0.9rem;">MinMax Scaler</span><br><b style="font-size:1.8rem; color:{color};">{status}</b></div>', unsafe_with_html=True)
+    st.markdown(f'<div class="metric-card"><span style="color:#a3a8b4; font-size:0.9rem;">MinMax Scaler</span><br><b style="font-size:1.8rem; color:{color};">{status}</b></div>', unsafe_allow_html=True)
 with m_col3:
-    st.markdown(f'<div class="metric-card"><span style="color:#a3a8b4; font-size:0.9rem;">Total Data Points</span><br><b style="font-size:1.8rem; color:#10B981;">{len(df_cluster)}</b></div>', unsafe_with_html=True)
+    st.markdown(f'<div class="metric-card"><span style="color:#a3a8b4; font-size:0.9rem;">Total Data Points</span><br><b style="font-size:1.8rem; color:#10B981;">{len(df_cluster)}</b></div>', unsafe_allow_html=True)
 
 st.write("")
 

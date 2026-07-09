@@ -18,85 +18,7 @@ from sklearn.datasets import load_iris
 # 1. Page Configuration & Title
 # -------------------------------------------------------------
 st.set_page_config(page_title="K-Means Clustering: Iris Dataset", layout="wide")
-st.markdown("""
-<style>
-
-/* Main App */
-.stApp {
-    background: linear-gradient(135deg,#EEF2FF,#F8FAFC,#FCE7F3);
-}
-
-/* Title */
-h1{
-    text-align:center;
-    color:#3B0764;
-    font-size:50px;
-    font-weight:900;
-}
-
-/* Headers */
-h2,h3{
-    color:#4C1D95;
-}
-
-/* Sidebar */
-[data-testid="stSidebar"]{
-    background:linear-gradient(180deg,#312E81,#6D28D9);
-    color:white;
-}
-
-[data-testid="stSidebar"] *{
-    color:white;
-}
-
-/* Cards */
-div[data-testid="stVerticalBlock"]>div{
-    background:rgba(255,255,255,0.75);
-    padding:20px;
-    border-radius:18px;
-    backdrop-filter:blur(12px);
-    box-shadow:0px 8px 20px rgba(0,0,0,0.15);
-    margin-bottom:15px;
-}
-
-/* Dataframe */
-[data-testid="stDataFrame"]{
-    border-radius:15px;
-    overflow:hidden;
-}
-
-/* Buttons */
-.stButton>button{
-    background:linear-gradient(90deg,#9333EA,#EC4899);
-    color:white;
-    border:none;
-    border-radius:10px;
-    padding:10px 20px;
-    transition:0.3s;
-}
-
-.stButton>button:hover{
-    transform:scale(1.05);
-    box-shadow:0px 8px 20px rgba(236,72,153,.5);
-}
-
-/* Metrics */
-[data-testid="metric-container"]{
-    background:white;
-    border-radius:15px;
-    padding:15px;
-    box-shadow:0px 5px 15px rgba(0,0,0,.1);
-}
-
-</style>
-""", unsafe_allow_html=True)
-st.markdown("""
-# 🌸 Iris Flower Clustering Dashboard
-
-### Interactive Machine Learning Visualization using **K-Means**
-
-Explore clustering, scaling, and the Elbow Method in a beautiful dashboard.
-""")
+st.title("Exercise for K-Means Tutorial")
 
 # -------------------------------------------------------------
 # 2. Data Loading & Preparation
@@ -125,33 +47,6 @@ use_scaling = st.sidebar.checkbox("Apply MinMaxScaler?", value=False,
 
 # Sidebar Slider for dynamic K value selection
 k_value = st.sidebar.slider("Select Number of Clusters (K):", min_value=1, max_value=6, value=3)
-df = load_data()
-
-# -------------------------------------------------------------
-# Sidebar
-# -------------------------------------------------------------
-st.sidebar.header("Clustering Parameters")
-
-use_scaling = st.sidebar.checkbox(
-    "Apply MinMaxScaler?",
-    value=False
-)
-
-k_value = st.sidebar.slider(
-    "Select Number of Clusters (K):",
-    min_value=1,
-    max_value=6,
-    value=3
-)
-
-# -------------------------------------------------------------
-# Metrics (ADD THIS HERE)
-# -------------------------------------------------------------
-c1, c2, c3 = st.columns(3)
-
-c1.metric("🌼 Samples", len(df))
-c2.metric("📊 Features", df.shape[1])
-c3.metric("🎯 Selected K", k_value)
 
 # -------------------------------------------------------------
 # 4. Data Preprocessing (Scaling)
@@ -181,42 +76,29 @@ with col1:
 
     # Create the scatter plot dynamically based on chosen K
     fig, ax = plt.subplots(figsize=(6, 4.5))
-    colors=[
-"#6366F1",
-"#EC4899",
-"#22C55E",
-"#F97316",
-"#EAB308",
-"#06B6D4",
-"#8B5CF6",
-"#EF4444"
-]
+    colors = ['blue', 'green', 'yellow', 'purple', 'orange', 'red']
 
     for cluster_id in range(k_value):
         cluster_df = df_cluster[df_cluster.cluster == cluster_id]
         ax.scatter(
-    cluster_df['petal length (cm)'],
-    cluster_df['petal width (cm)'],
-    s=85,
-    color=colors[cluster_id],
-    edgecolors="white",
-    linewidth=1.3,
-    alpha=.85,
-    label=f"Cluster {cluster_id}"
-)
+            cluster_df['petal length (cm)'],
+            cluster_df['petal width (cm)'],
+            color=colors[cluster_id % len(colors)],
+            label=f'Cluster {cluster_id}',
+            edgecolors='black',
+            alpha=0.7
+        )
 
     # Plot cluster centers if K > 1
     if k_value > 1:
         ax.scatter(
-    km.cluster_centers_[:,0],
-    km.cluster_centers_[:,1],
-    c="black",
-    marker="*",
-    s=350,
-    edgecolors="gold",
-    linewidth=2,
-    label="Centroids"
-)
+            km.cluster_centers_[:, 0],
+            km.cluster_centers_[:, 1],
+            color='black',
+            marker='X',
+            s=150,
+            label='Centroids'
+        )
 
     ax.set_xlabel('Petal Length (cm)')
     ax.set_ylabel('Petal Width (cm)')
@@ -248,4 +130,4 @@ with col2:
 # -------------------------------------------------------------
 st.write("---")
 st.subheader("Processed DataFrame Preview")
-st.dataframe(df_cluster.head(10), use_container_width=True)
+st.dataframe(df_cluster.head(10), use_container_width=True) 

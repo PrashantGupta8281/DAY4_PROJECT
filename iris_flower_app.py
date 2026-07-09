@@ -168,13 +168,15 @@ with col1:
     for cluster_id in range(k_value):
         cluster_df = df_cluster[df_cluster.cluster == cluster_id]
         ax.scatter(
-            cluster_df['petal length (cm)'],
-            cluster_df['petal width (cm)'],
-            color=colors[cluster_id % len(colors)],
-            label=f'Cluster {cluster_id}',
-            edgecolors='black',
-            alpha=0.7
-        )
+    cluster_df['petal length (cm)'],
+    cluster_df['petal width (cm)'],
+    s=85,
+    color=colors[cluster_id],
+    edgecolors="white",
+    linewidth=1.3,
+    alpha=.85,
+    label=f"Cluster {cluster_id}"
+)
 
     # Plot cluster centers if K > 1
     if k_value > 1:

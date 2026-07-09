@@ -181,13 +181,15 @@ with col1:
     # Plot cluster centers if K > 1
     if k_value > 1:
         ax.scatter(
-            km.cluster_centers_[:, 0],
-            km.cluster_centers_[:, 1],
-            color='black',
-            marker='X',
-            s=150,
-            label='Centroids'
-        )
+    km.cluster_centers_[:,0],
+    km.cluster_centers_[:,1],
+    c="black",
+    marker="*",
+    s=350,
+    edgecolors="gold",
+    linewidth=2,
+    label="Centroids"
+)
 
     ax.set_xlabel('Petal Length (cm)')
     ax.set_ylabel('Petal Width (cm)')

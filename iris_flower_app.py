@@ -19,6 +19,78 @@ from sklearn.datasets import load_iris
 # -------------------------------------------------------------
 st.set_page_config(page_title="K-Means Clustering: Iris Dataset", layout="wide")
 st.markdown("""
+<style>
+
+/* Main App */
+.stApp {
+    background: linear-gradient(135deg,#EEF2FF,#F8FAFC,#FCE7F3);
+}
+
+/* Title */
+h1{
+    text-align:center;
+    color:#3B0764;
+    font-size:50px;
+    font-weight:900;
+}
+
+/* Headers */
+h2,h3{
+    color:#4C1D95;
+}
+
+/* Sidebar */
+[data-testid="stSidebar"]{
+    background:linear-gradient(180deg,#312E81,#6D28D9);
+    color:white;
+}
+
+[data-testid="stSidebar"] *{
+    color:white;
+}
+
+/* Cards */
+div[data-testid="stVerticalBlock"]>div{
+    background:rgba(255,255,255,0.75);
+    padding:20px;
+    border-radius:18px;
+    backdrop-filter:blur(12px);
+    box-shadow:0px 8px 20px rgba(0,0,0,0.15);
+    margin-bottom:15px;
+}
+
+/* Dataframe */
+[data-testid="stDataFrame"]{
+    border-radius:15px;
+    overflow:hidden;
+}
+
+/* Buttons */
+.stButton>button{
+    background:linear-gradient(90deg,#9333EA,#EC4899);
+    color:white;
+    border:none;
+    border-radius:10px;
+    padding:10px 20px;
+    transition:0.3s;
+}
+
+.stButton>button:hover{
+    transform:scale(1.05);
+    box-shadow:0px 8px 20px rgba(236,72,153,.5);
+}
+
+/* Metrics */
+[data-testid="metric-container"]{
+    background:white;
+    border-radius:15px;
+    padding:15px;
+    box-shadow:0px 5px 15px rgba(0,0,0,.1);
+}
+
+</style>
+""", unsafe_allow_html=True)
+st.markdown("""
 # 🌸 Iris Flower Clustering Dashboard
 
 ### Interactive Machine Learning Visualization using **K-Means**

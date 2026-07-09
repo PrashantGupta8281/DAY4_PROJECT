@@ -18,7 +18,13 @@ from sklearn.datasets import load_iris
 # 1. Page Configuration & Title
 # -------------------------------------------------------------
 st.set_page_config(page_title="K-Means Clustering: Iris Dataset", layout="wide")
-st.title("Exercise for K-Means Tutorial")
+st.markdown("""
+# 🌸 Iris Flower Clustering Dashboard
+
+### Interactive Machine Learning Visualization using **K-Means**
+
+Explore clustering, scaling, and the Elbow Method in a beautiful dashboard.
+""")
 
 # -------------------------------------------------------------
 # 2. Data Loading & Preparation

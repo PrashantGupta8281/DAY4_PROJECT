@@ -254,7 +254,7 @@ with st.expander("📘 About this Project"):
     🎯 Interactive ML Dashboard
     """)
 
-st.markdown("---")
+
 
 st.markdown(
 """

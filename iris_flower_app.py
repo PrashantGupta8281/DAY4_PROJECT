@@ -190,30 +190,31 @@ with col1:
         "#06B6D4"
     ]
 
-    for cluster_id in range(k_value):
+        for cluster_id in range(k_value):
         cluster_df = df_cluster[df_cluster.cluster == cluster_id]
-       ax.scatter(
-    cluster_df['petal length (cm)'],
-    cluster_df['petal width (cm)'],
-    s=85,
-    color=colors[cluster_id],
-    edgecolors="white",
-    linewidth=1.3,
-    alpha=.85,
-    label=f"Cluster {cluster_id}"
-)
+
+        ax.scatter(
+            cluster_df['petal length (cm)'],
+            cluster_df['petal width (cm)'],
+            s=85,
+            color=colors[cluster_id],
+            edgecolors="white",
+            linewidth=1.3,
+            alpha=0.85,
+            label=f"Cluster {cluster_id}"
+        )
     # Plot cluster centers if K > 1
-   if k_value > 1:
-    ax.scatter(
-        km.cluster_centers_[:, 0],
-        km.cluster_centers_[:, 1],
-        c="black",
-        marker="*",
-        s=350,
-        edgecolors="gold",
-        linewidth=2,
-        label="Centroids"
-    )
+       if k_value > 1:
+           ax.scatter(
+            km.cluster_centers_[:, 0],
+            km.cluster_centers_[:, 1],
+            c="black",
+            marker="*",
+            s=350,
+            edgecolors="gold",
+            linewidth=2,
+            label="Centroids"
+        )
 
     ax.set_xlabel('Petal Length (cm)')
     ax.set_ylabel('Petal Width (cm)')
